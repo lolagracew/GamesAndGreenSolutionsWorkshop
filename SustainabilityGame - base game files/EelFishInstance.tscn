@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://eel.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 34.3525
+
+[node name="fishCollection" type="Node2D"]
+
+[node name="eel" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3, 1 )
+scale = Vector2( 0.0398327, 0.0376317 )
+frame = 2
+
+[node name="fishArea" type="Area2D" parent="."]
+
+[node name="fishCollisionArea" type="CollisionShape2D" parent="fishArea"]
+scale = Vector2( 0.873298, 0.902699 )
+shape = SubResource( 1 )

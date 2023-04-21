@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://PathFollow2D.gd" type="Script" id=1]
+[ext_resource path="res://gameAssets/boat.PNG" type="Texture" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 608, 823 )
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 509.589
+height = 665.885
+
+[node name="BoatOnPath" type="Path2D"]
+position = Vector2( 72, -939 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 608, 823 )
+rotation = 1.0392
+offset = 2474.41
+script = ExtResource( 1 )
+
+[node name="Boat" type="Sprite" parent="PathFollow2D"]
+position = Vector2( -6.22656, 6.59351 )
+rotation = -3.14159
+scale = Vector2( 0.0617187, 0.0608333 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D/Boat"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Boat/Area2D"]
+position = Vector2( 98.6301, -0.00012207 )
+rotation = 1.5708
+shape = SubResource( 2 )

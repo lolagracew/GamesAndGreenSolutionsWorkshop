@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://gameAssets/boat.PNG" type="Texture" id=1]
+[ext_resource path="res://LeftPathFollow2D.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 16.4558, -17.6312, -16.4558, 17.6312, -191, -172, -38.7886, -2.35083, 38.7886, 2.35083, -191, -176, -12.9295, -173.961, 12.9295, 173.961, 28, 121, 82.2789, -43.4903, -82.2789, 43.4903, -145, 410, -22.3328, 95.2084, 22.3328, -95.2084, -528, 251 )
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 637.48
+height = 778.843
+
+[node name="LeftBoatOnPath" type="Path2D"]
+position = Vector2( 201, 175 )
+curve = SubResource( 1 )
+
+[node name="LeftPathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( -191, -172 )
+rotation = 2.40459
+loop = false
+script = ExtResource( 3 )
+
+[node name="LeftBoat" type="Sprite" parent="LeftPathFollow2D"]
+position = Vector2( -1.02783, -1.08691 )
+rotation = 3.13287
+scale = Vector2( 0.0574667, 0.0619374 )
+texture = ExtResource( 1 )
+
+[node name="BoatArea" type="Area2D" parent="LeftPathFollow2D/LeftBoat"]
+
+[node name="BoatCollisionShape" type="CollisionShape2D" parent="LeftPathFollow2D/LeftBoat/BoatArea"]
+position = Vector2( 144.995, -32.0493 )
+rotation = -1.5708
+shape = SubResource( 2 )
+
+[connection signal="input_event" from="LeftPathFollow2D/LeftBoat/BoatArea" to="LeftPathFollow2D" method="_on_BoatArea_input_event"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://orangeFish.tscn" type="PackedScene" id=1]
+[ext_resource path="res://orangeFish.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 34.3525
+
+[node name="fishCollection" type="Node2D"]
+
+[node name="orangeFish" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -1 )
+scale = Vector2( 0.0229601, 0.0209002 )
+script = ExtResource( 5 )
+
+[node name="fishArea" type="Area2D" parent="."]
+
+[node name="fishCollisionArea" type="CollisionShape2D" parent="fishArea"]
+scale = Vector2( 0.873298, 0.902699 )
+shape = SubResource( 1 )

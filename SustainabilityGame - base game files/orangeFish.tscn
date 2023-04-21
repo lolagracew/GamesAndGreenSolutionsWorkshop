@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://AnimatedSprite.gd" type="Script" id=1]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="orangeFish" type="AnimatedSprite"]
+position = Vector2( 136.938, 129.5 )
+scale = Vector2( 0.0544102, 0.0448851 )
+frames = SubResource( 1 )
+playing = true
+script = ExtResource( 1 )

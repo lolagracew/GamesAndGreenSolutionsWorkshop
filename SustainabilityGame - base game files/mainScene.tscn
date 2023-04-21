@@ -1,0 +1,181 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://orangeFish.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameAssets/cargoShip.PNG" type="Texture" id=2]
+[ext_resource path="res://mainScene.gd" type="Script" id=3]
+[ext_resource path="res://wave.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gameAssets/cleanSeaBackground.png" type="Texture" id=5]
+[ext_resource path="res://eel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GreenFish.tscn" type="PackedScene" id=7]
+[ext_resource path="res://OwnBoatOnPath.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gameAssets/screen_borders.png" type="Texture" id=10]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 133.999
+height = 388.001
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 418.706, 20 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 389.424, 27.2817 )
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CleanSeaBackground" type="Sprite" parent="."]
+position = Vector2( 513.75, 299.5 )
+scale = Vector2( 0.534635, 0.500833 )
+texture = ExtResource( 5 )
+
+[node name="wave" parent="." instance=ExtResource( 4 )]
+position = Vector2( 166, 450 )
+
+[node name="wave3" parent="wave" instance=ExtResource( 4 )]
+position = Vector2( 2309.74, 403.146 )
+scale = Vector2( 1.21868, 1.12201 )
+frame = 2
+
+[node name="wave2" parent="wave" instance=ExtResource( 4 )]
+position = Vector2( 1101.77, -607.147 )
+scale = Vector2( 1.02069, 0.986407 )
+frame = 1
+
+[node name="wave" parent="wave" instance=ExtResource( 4 )]
+position = Vector2( 676.992, -1651.44 )
+scale = Vector2( 1.23323, 0.9013 )
+frame = 1
+
+[node name="wave4" parent="wave" instance=ExtResource( 4 )]
+position = Vector2( 2256.57, -1202.95 )
+scale = Vector2( 1.17681, 1.02573 )
+frame = 2
+
+[node name="CargoShip" type="Sprite" parent="."]
+position = Vector2( 363.25, 176.625 )
+scale = Vector2( 0.0674479, 0.0522917 )
+texture = ExtResource( 2 )
+
+[node name="CargoShip2" type="Sprite" parent="."]
+position = Vector2( 717, 388 )
+rotation = -0.109956
+scale = Vector2( 0.0708717, 0.0515976 )
+texture = ExtResource( 2 )
+
+[node name="CargoShip3" type="Sprite" parent="."]
+position = Vector2( 245.67, 408.991 )
+rotation = 0.656244
+scale = Vector2( 0.0627829, 0.057874 )
+texture = ExtResource( 2 )
+
+[node name="fishInstanceDelay" type="Timer" parent="."]
+
+[node name="LeftBoatInstanceDelay" type="Timer" parent="."]
+
+[node name="OwnBoatInstanceDelay" type="Timer" parent="."]
+
+[node name="TrashInstanceDelay" type="Timer" parent="."]
+
+[node name="fishingZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fishingZone"]
+position = Vector2( 509, 302 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="NoFishArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="NoFishArea"]
+position = Vector2( 510, 300 )
+scale = Vector2( 52, 31 )
+polygon = PoolVector2Array( -9.82692, -9.70968, -6.84615, -4.70968, -6.26923, -3.74193, -5.71154, -5.29032, 5, -5.54839, 6.84615, -2.06452, 6.94231, 2.09677, 5.63462, 5.6129, -5.86538, 5.80645, -6.90385, 2.64516, -7.11539, -0.516129, -6.25, -3.74193, -9.80769, -9.64516, -9.80769, 9.67742, 9.96154, 9.67742, 9.94231, -9.80645 )
+
+[node name="eel" parent="." instance=ExtResource( 6 )]
+position = Vector2( 708, 236 )
+rotation = 1.5708
+frame = 1
+
+[node name="GreenFish" parent="eel" instance=ExtResource( 7 )]
+position = Vector2( 1281.75, 3164.43 )
+scale = Vector2( 0.937454, 0.910146 )
+
+[node name="orangeFish" parent="eel" instance=ExtResource( 1 )]
+position = Vector2( 6027.25, 437.688 )
+scale = Vector2( 0.310877, 0.295125 )
+
+[node name="orangeFish2" parent="eel" instance=ExtResource( 1 )]
+position = Vector2( -1892.33, 12885.5 )
+scale = Vector2( -0.60233, 0.677708 )
+
+[node name="GreenFish2" parent="eel" instance=ExtResource( 7 )]
+position = Vector2( 3382.44, 9899.67 )
+scale = Vector2( 0.98215, 1.02847 )
+
+[node name="eel" parent="eel" instance=ExtResource( 6 )]
+position = Vector2( -78.8562, 8501.36 )
+scale = Vector2( 0.691461, 0.670093 )
+frame = 1
+
+[node name="BottomBoatOnPath" parent="eel" instance=ExtResource( 8 )]
+position = Vector2( -3783.59, 19393.2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 523, -25 )
+
+[node name="ScreenBorders2" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( -6, 4 )
+scale = Vector2( 1.61927, 1 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( -0.00012207, 2 )
+scale = Vector2( 1.61927, 1 )
+shape = SubResource( 4 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="."]
+position = Vector2( 516, 622 )
+
+[node name="ScreenBorders2" type="Sprite" parent="KinematicBody2D2"]
+position = Vector2( -6, 4 )
+scale = Vector2( 1.61927, 1 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D2"]
+position = Vector2( 7, 2 )
+scale = Vector2( 1.61927, 1 )
+shape = SubResource( 4 )
+
+[node name="KinematicBody2D3" type="KinematicBody2D" parent="."]
+position = Vector2( -51, 276 )
+
+[node name="ScreenBorders2" type="Sprite" parent="KinematicBody2D3"]
+position = Vector2( 23, 28 )
+rotation = -1.57429
+scale = Vector2( 1.21334, 1 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D3/ScreenBorders2"]
+position = Vector2( -2.89752, -1.97906 )
+scale = Vector2( 1, 0.999999 )
+shape = SubResource( 5 )
+
+[node name="KinematicBody2D4" type="KinematicBody2D" parent="."]
+position = Vector2( 1034, 291 )
+
+[node name="ScreenBorders2" type="Sprite" parent="KinematicBody2D4"]
+position = Vector2( 23, 28 )
+rotation = -1.57429
+scale = Vector2( 1.21334, 1 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D4/ScreenBorders2"]
+position = Vector2( -2.89752, -1.97906 )
+scale = Vector2( 1, 0.999999 )
+shape = SubResource( 5 )
+
+[connection signal="timeout" from="fishInstanceDelay" to="." method="_on_fishInstanceDelay_timeout"]
+[connection signal="timeout" from="LeftBoatInstanceDelay" to="." method="_on_LeftBoatInstanceDelay_timeout"]
+[connection signal="timeout" from="OwnBoatInstanceDelay" to="." method="_on_OwnBoatInstanceDelay_timeout"]
+[connection signal="timeout" from="TrashInstanceDelay" to="." method="_on_TrashInstanceDelay_timeout"]
+[connection signal="area_entered" from="fishingZone" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="NoFishArea" to="." method="_on_NoFishArea_area_entered"]
