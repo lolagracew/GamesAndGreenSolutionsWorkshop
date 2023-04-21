@@ -10,4 +10,5 @@ Teaching aims:
 - Visualise the effects that unsustainable practices have on society and environment
 - Navigate the challenges that these create regarding wildlife, industry output, economy, and society
 
-
+## To get started download Godot version 3:
+https://godotengine.org/download/3.x/windows/
